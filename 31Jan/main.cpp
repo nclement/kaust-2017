@@ -30,11 +30,11 @@ void variables() {
 
     cout << "The average is: " << average << endl;
 
-    int x;// = 5;   // x:?
-    int y = 2;   // x:?, y:2
-    int t = x;   // t:?, x:?, y:2
-    x = y;       // t:?, x:2, y:2
-    y = t;       // t:?, x:2, y:?
+    int x = 5;   // x:5
+    int y = 2;   // x:5, y:2
+    int t = x;   // t:5, x:5, y:2
+    x = y;       // t:5, x:2, y:2
+    y = t;       // t:5, x:2, y:5
 
     cout << "x is: " << x << " and y is: " << y << endl;
 }
