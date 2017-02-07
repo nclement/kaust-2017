@@ -66,10 +66,7 @@ void giveChange() {
     {
         cout << "One Hundred" << endl;
     }
-    else {
-        cout << "give 'em nothing" << endl;
-    }
-    
+
     cout << numfifty << " fifties\n";
     cout << numTwenty << " twenties\n";
     cout << numten << " tens\n";
