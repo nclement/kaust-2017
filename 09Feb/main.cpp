@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include <cmath>
 
 using namespace std;
@@ -16,7 +17,7 @@ void newtons() {
     cout << "My guess is: " << guess << " vs " << sqrt(N) << endl;
     for (int i = 1; i <= 10; i++) {
         guess = (N / guess + guess) / 2.0;
-        cout << "My guess is: " << guess << " vs " << sqrt(N) << endl;
+        cout << "My guess is: " << setprecision(20) << guess << " vs " << sqrt(N) << endl;
     }
 }
 
@@ -57,10 +58,15 @@ void pizzaArea() {
 void printPeopleArea() {
 
     int small, medium, large, people;
-    double price, price2, area, area2, z;
-    for (int people2 = 1; people2 <= 100; people2++) {
-        // Run the following code for 1 <= people2 <= 100
+    double area, area2;
+    double maxArea = -1; // Sentinel value
+    int maxAreaPeople = 0;
+    double minArea = -1;
+    int minAreaPeople = 0;
 
+    for (int i = 1; i <= 100; i++) {
+        // Run the following code for 1 <= people2 <= 100
+        int people2 = i;
         people = people2;
         large = people / 7;
         people = people % 7;
@@ -72,7 +78,29 @@ void printPeopleArea() {
         area = area + (small) * (5 * 5) * (3.14159);
         area2 = area / people2;
         cout << "For " << people2 << " people, area per person is: " << area2 << "in^2" << endl;
+
+        // Before the loop, I sent maxArea to be -1, so I know it's a bad value
+        if (maxArea < 0) {
+            // Set these both to a valid thing.
+            maxArea = area2;
+            minArea = area2;
+        }
+
+        // Check and see if we're greater than the max
+        if (area2 > maxArea) {
+            maxArea = area2;
+            // Remember the number of people we used.
+            maxAreaPeople = people2;
+        }
+        // See if we're less than the min
+        if (area2 < minArea) {
+            minArea = area2;
+            minAreaPeople = people2;
+        }
     }
+
+    cout << "The max area is " << maxArea << " with " << maxAreaPeople << " people" << endl;
+    cout << "The min area is " << minArea << " with " << minAreaPeople << " people" << endl;
 }
 
 int main() {
