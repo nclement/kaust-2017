@@ -182,7 +182,7 @@ void fibanoci() {
     }
 }
 
-int main() {
+int main2() {
     int size;
     cout << "Enter the size of the rocket: ";
     cin >> size;
@@ -222,3 +222,44 @@ int main() {
 }
 
 
+/**
+ *      *
+ *     ***
+ *    *****
+ *   *******
+ *
+ *   spaces: y = mx + b = -1 * x + 4 = 4 - line
+ *   stars: stars = 2 * line - 1
+ *    x       y
+ *   line | #spaces | #stars
+ *   -----|---------|-------
+ *    1   |    3    |   1
+ *    2   |    2    |   3
+ *    3   |    1    |   5
+ *    4   |    0    |   7
+ */
+int main() {
+    int thing = 1;
+    cout << "Thing is " << thing << endl;
+    thing++; // thing = thing + 1
+    cout << "Thing is " << thing << endl;
+    thing += 12;  // thing = thing + 12;
+    cout << "Thing is " << thing << endl;
+    thing--; // thing = thing - 1
+    cout << "Thing is " << thing << endl;
+    thing *= 2; // thing = thing * 2
+    cout << "Thing is " << thing << endl;
+
+    // "Definite loop": Only want it to go a specified number of times
+    for (int line = 1; line <= 4; line++) {
+        // draw some spaces
+        for (int i = 1; i <= 4 - line; i++) {
+            cout << " ";
+        }
+        // draw some stars
+        for (int i = 1; i <= 2 * line - 1; i++) {
+            cout << "*";
+        }
+        cout << endl;
+    }
+}

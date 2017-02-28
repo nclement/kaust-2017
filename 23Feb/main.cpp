@@ -6,13 +6,15 @@ using namespace std;
 
 int main() {
     // Set the random seed, based off the current time.
-    srand(time(NULL));
+    srand(0);
     cout << "The time is: " << time(NULL) << endl;
-    // Random number between 0 and 104
-    int randNum = rand() % 105;
-    // Random number between -50 and 49
-    int randNum2 = (rand() % 101) - 50;
-
+    for (int i = 0; i < 10; i++) {
+        // Random number between 0 and 104
+        int randNum = rand() % 105;
+        // Random number between -50 and 49
+        int randNum2 = (rand() % 101) - 50;
+        cout << "Rand1 is " << randNum << " and two is " << randNum2 << endl;
+    }
 
     // Task 1:
     // Ask the user for the highest and lowest number
@@ -35,6 +37,7 @@ int main() {
 
     int numGuesses = 1;
     // Keep going as long as it's incorrect
+    // "Indefinite loop": keep going for as many times as you need to.
     while (faisal != userInput) {
         // Report if it's high or low
         if (userInput > faisal) {
@@ -50,5 +53,4 @@ int main() {
     }
     cout << "Correct!" << endl;
     cout << "It took you " << numGuesses << " guesses" << endl;
-
 }
