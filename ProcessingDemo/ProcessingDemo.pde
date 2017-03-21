@@ -1,16 +1,21 @@
 int rectX = 0;
 int xMax = 500;
 
+float secretX;
+float secretY; 
 void setup() {
   size(500, 200);
+  
+  secretX = random(width);
+  secretY = random(height);
 }
 
 void draw() {
-  frameRate(2000);
+  frameRate(200);
   
   noStroke();
   // 50 - 100
-  fill(random(255),random(255),random(255));
+  fill(random(255),random(255),random(255), 1);
   // x,y of the center, width, height
   ellipse(mouseX, mouseY, 30, 30);
   stroke(255);
@@ -39,4 +44,11 @@ void draw() {
 
 void mousePressed() {
   background(240,248,255);
+  
+  float xDiff = abs(mouseX - secretX);
+  float yDiff = abs(mouseY - secretY);
+  if (xDiff < 50 && yDiff < 50) {
+    background(0, 0, 255);
+    text("You found it!!", 0, 50);
+  }
 }

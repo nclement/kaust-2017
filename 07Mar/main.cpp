@@ -48,17 +48,34 @@ void birthdays() {
 }
 
 int main() {
-    double r;
+    double minR;
     cout <<"Enter the minimum rating: ";
-    cin>>r;
-    std::wcout.imbue(std::locale("en_US.UTF-8"));
-    wcout << "hello" << endl;
-    int number;
+    cin>>minR;
+    int minV;
+    cout << "Enter the minimum num votes: ";
+    cin >> minV;
+
+    int numberOfVotes;
+    double rating;
+    string name;
+
     ifstream ratings;
     ratings.open("/Users/nclement/Teaching/kaust/2017/in_class/ratings.list.txt");
+
     if (ratings.is_open()){
+
+        cout << "hello" << endl;
+        // Ignore the first line.
+        getline(ratings, name);
+
         while (!ratings.eof()) {
-            ratings >> number;
+            ratings >> numberOfVotes;
+            ratings >> rating;
+            getline(ratings, name);
+
+            if (rating > minR && numberOfVotes > minV) {
+                cout << "Movie with rating " << rating << " and votes " << numberOfVotes << " is: " << name << endl;
+            }
         }
     }
     // Read from the ratings.list.txt file
