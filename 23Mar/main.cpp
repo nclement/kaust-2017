@@ -19,6 +19,9 @@ int main()
     int users;
     cout << "Enter number of entries: ";
     cin >> users;
+    // This will make sure we don't have any extra characters.
+    string junk;
+    getline(cin, junk); // throw away this stuff.
     cout << endl;
 
     vector<string> names;
@@ -28,12 +31,17 @@ int main()
     {
         cout << "Enter Student " << i+1 << " Name: ";
         string x;
-        cin >> x;
+        // Use getline instead of cin to get the entire line (including spaces)
+        getline(cin, x);
+
         names.push_back(x);
-        cout << endl << "Enter Student " << i+1 << " ID: ";
+        cout << "Enter Student " << i+1 << " ID: ";
         int n;
         cin >> n;
         id.push_back(n);
+        // This will make sure we don't have any extra characters.
+        string junk;
+        getline(cin, junk); // throw away this stuff.
     }
 
     // Print out the database
@@ -44,11 +52,10 @@ int main()
 
     // Search the database
     string searchName = "";
+    // "Prime the pump" here.
+    cout << "What name do you want to search for [type QUIT to quit]? ";
+    getline(cin, searchName);
     while(searchName != "QUIT") {
-
-        cout << "What name do you want to search for [type QUIT to quit]? ";
-        cin >> searchName;
-
         int count = 0;
         for (int i = 0; i < users; i++) {
             if (searchName == names[i]) {
@@ -60,7 +67,13 @@ int main()
         if (count == 0) {
             cout << "No name found" << endl;
         }
+
+        // Need to have this again at the end of the loop to ask the user
+        // for more searching.
+        cout << "What name do you want to search for [type QUIT to quit]? ";
+        getline(cin, searchName);
     }
 
+    cout << "Goodbye!" << endl;
     return 0;
 }
